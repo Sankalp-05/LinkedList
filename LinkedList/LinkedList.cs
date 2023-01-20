@@ -8,7 +8,7 @@ namespace LinkedList
 {
     internal class LinkedList
         {
-        //For storing the address of first element
+        ///For storing the address of first element
         internal Node head;
         //For adding node at the last position
         internal void Append(int data)
@@ -148,6 +148,31 @@ namespace LinkedList
             }
             if (temp == null)
                 Console.WriteLine("Given value: " + value + " is not present in Linked list");
+        }
+        //To insert node after a specific node we have to find/search that node in our list
+        internal void AddAfter(int value, int data)
+        {
+            Node tempHead = head;
+            Node newNode = new Node(data);
+
+            if (head == null)
+            {
+                Console.WriteLine("Linked List is empty");
+                return;
+            }
+
+            while (tempHead.next != null)
+            {
+                //If our desired value is found in the list after which we want to insert our node
+                if (tempHead.data == value)
+                {
+                    Console.WriteLine(newNode.data + " is inserted after " + tempHead.data);
+                    newNode.next = tempHead.next;
+                    tempHead.next = newNode;
+                    break;
+                }
+                tempHead = tempHead.next;
+            }
         }
         //For displaying all elements in Linked List
         internal void Display()
